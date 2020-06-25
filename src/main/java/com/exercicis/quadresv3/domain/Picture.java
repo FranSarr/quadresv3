@@ -17,9 +17,10 @@ public class Picture {
     private String author;
     private Float price;
 
+    @JoinColumn(name ="shop_id", nullable = false)
     @ManyToOne(targetEntity = Shop.class)
-    @JoinColumn(name ="shop_id")
     private Shop shop;
+
     private Date date;
 
     public Picture() {
