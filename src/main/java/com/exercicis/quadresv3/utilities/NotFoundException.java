@@ -14,7 +14,4 @@ import org.springframework.web.bind.annotation.ResponseStatus;
             super(msg);
         }
 
-        //public NotFoundException() {
-        //    super();
-        //}
     }

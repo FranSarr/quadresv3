@@ -4,10 +4,8 @@ import com.exercicis.quadresv3.domain.Picture;
 import com.exercicis.quadresv3.domain.Shop;
 import com.exercicis.quadresv3.persistence.HelperPictureRepository;
 import com.exercicis.quadresv3.persistence.HelperShopRepository;
-import com.exercicis.quadresv3.utilities.PictureNotFoundException;
-import javassist.NotFoundException;
+import com.exercicis.quadresv3.utilities.ShopNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -46,17 +44,19 @@ public class ShopController {
     @GetMapping("{id}/pictures")
    List<Picture> getPicturesByShop(@PathVariable int id) {
         Shop myShop = helperShopRepository.findById(id);
-    //    System.out.println(id +"   "+myShop.toString());
+        if(myShop == null) {
+            throw new ShopNotFoundException(id);
+        }
      return helperPictureRepository.findByShop(myShop);
    }
-   //     return helperPictureRepository.findAllByShopId(id);
-            //    .orElseThrow(() -> new PictureNotFoundException(id));
-    //}
 
     // Create a new picture in a particular shop
     @PostMapping(path="{id}/pictures")
     public Picture createPicture(@PathVariable int id,@RequestBody Picture newPicture){
         Shop myShop = helperShopRepository.findById(id);
+        if(myShop == null) {
+            throw new ShopNotFoundException(id);
+        }
         newPicture.setShop(myShop);
         newPicture.setDate(new Date());
         return helperPictureRepository.save(newPicture);
