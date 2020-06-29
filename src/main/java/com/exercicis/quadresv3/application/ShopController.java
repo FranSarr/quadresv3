@@ -62,5 +62,12 @@ public class ShopController {
         return helperPictureRepository.save(newPicture);
     }
 
+    // Deelte all pictures from a particular Shop
+    @DeleteMapping("{id}/pictures")
+    void deletePictures(@PathVariable int id) {
+        Shop myShop = helperShopRepository.findById(id);
+        helperPictureRepository.deletePictureByShop(myShop);
+        //repository.delete(id);
+    }
 
 }

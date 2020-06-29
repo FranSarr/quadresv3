@@ -13,7 +13,7 @@ public interface HelperPictureRepository extends CrudRepository<Picture, Integer
    // @Query("select picture from Picture picture where picture.shop_id = :shop_id")
    List<Picture> findByShop(Shop shop);
 
-    @Transactional // Allos wru¡ite operations
-    void removeByShop(Shop shop);
+    @Transactional // Allows write operations
+    void deletePictureByShop(Shop shop);
 
 }
