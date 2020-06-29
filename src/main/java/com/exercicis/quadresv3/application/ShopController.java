@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController // This means that this class is a Controller
@@ -51,5 +52,15 @@ public class ShopController {
    //     return helperPictureRepository.findAllByShopId(id);
             //    .orElseThrow(() -> new PictureNotFoundException(id));
     //}
+
+    // Create a new picture in a particular shop
+    @PostMapping(path="{id}/pictures")
+    public Picture createPicture(@PathVariable int id,@RequestBody Picture newPicture){
+        Shop myShop = helperShopRepository.findById(id);
+        newPicture.setShop(myShop);
+        newPicture.setDate(new Date());
+        return helperPictureRepository.save(newPicture);
+    }
+
 
 }

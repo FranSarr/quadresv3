@@ -26,6 +26,13 @@ public class Picture {
     public Picture() {
     }
 
+    public Picture(String name, String author, Float price) {
+        this.name = name;
+        this.author = author;
+        this.price = price;
+        this.date = new Date();
+    }
+
     public Picture(String name, String author, Float price, Shop shop) {
         this.name = name;
         this.author = author;
@@ -37,24 +44,27 @@ public class Picture {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public Float getPrice() {
-        return price;
+    public String getAuthor() { return author; }
+    public void setAuthor(String author) { this.author = author; }
+
+    public Float getPrice() { return price; }
+    public void setPrice(Float price) {
+        this.price = price;
     }
+
 
     public Shop getShop() {
         return shop;
     }
-
     public void setShop(Shop shop) {
         this.shop = shop;
     }
 
-    public void setPrice(Float price) {
-        this.price = price;
-    }
+    public Date getDate() { return date; }
+    public void setDate(Date date) { this.date = date; }
+
 }
