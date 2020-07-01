@@ -4,6 +4,7 @@ import com.exercicis.quadresv3.domain.Picture;
 import com.exercicis.quadresv3.domain.Shop;
 import com.exercicis.quadresv3.persistence.HelperPictureRepository;
 import com.exercicis.quadresv3.persistence.HelperShopRepository;
+import com.exercicis.quadresv3.utilities.ShopNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
